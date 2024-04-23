@@ -1,6 +1,10 @@
 # Extended comparison of Chronos against the statistical ensemble
 
-We present an extension to the [original comparison by Nixtla](https://github.com/Nixtla/nixtla/tree/main/experiments/amazon-chronos) of Chronos [1] against the SCUM ensemble [2]. In this analysis on over 200K unique time series across 28 datasets from Benchmark II in the Chronos paper [1], we show that **zero-shot** Chronos models perform comparably to this strong ensemble of 4 statistical models while being significantly faster on average. We follow the original study as closely as possible, including loading task definitions from GluonTS and computing metrics using utilsforecast.
+
+## Background
+A few weeks ago, we presented a [fully reproducible experiment](https://github.com/Nixtla/nixtla/tree/main/experiments/amazon-chronos) showing that Amazon Chronos was 10% less accurate and 500% slower than training classical statistical models. The Amazon team kindly answered by extending our benchmarking efforts, confirming our results for the selected datasets, and showing a differentiated performance for new datasets.
+
+Here we present an extension to the [original comparison by Nixtla](https://github.com/Nixtla/nixtla/tree/main/experiments/amazon-chronos) of Chronos [1] against the SCUM ensemble [2]. In this analysis on over 200K unique time series across 28 datasets from Benchmark II in the Chronos paper [1], we show that **zero-shot** Chronos models perform comparably to this strong ensemble of 4 statistical models while being significantly faster on average. We follow the original study as closely as possible, including loading task definitions from GluonTS and computing metrics using utilsforecast.
 
 ## Empirical Evaluation
 
