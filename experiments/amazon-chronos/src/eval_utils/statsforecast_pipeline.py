@@ -72,7 +72,7 @@ def run_statistical_ensemble(
     freq: str,
     seasonality: int,
     quantiles: List[float],
-    max_context_length: int = 5_000,
+    max_context_length: int = 2_000,
 ) -> Tuple[pd.DataFrame, float, str]:
     os.environ["NIXTLA_ID_AS_COL"] = "true"
     models = [
@@ -82,14 +82,11 @@ def run_statistical_ensemble(
         DynamicOptimizedTheta(season_length=seasonality),
     ]
     init_time = time()
-    series_per_core = 15
-    n_series = train_df["unique_id"].nunique()
-    n_jobs = max(1, min(n_series // series_per_core, os.cpu_count()))
     sf = StatsForecast(
         models=models,
         fallback_model=SeasonalNaive(season_length=seasonality),
         freq=freq,
-        n_jobs=n_jobs,
+        n_jobs=-1,
     )
     # Shorten all time series to at most max_context_length to avoid extremely long runtime
     train_df = train_df.groupby("unique_id", sort=False, as_index=False).tail(

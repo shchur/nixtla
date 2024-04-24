@@ -195,8 +195,10 @@ class ExperimentHandler:
         fcsts_df = pd.concat(fcsts_df, axis=1).reset_index()
         fcsts_df["ds"] = pd.to_datetime(fcsts_df["ds"])
         times_df = pd.concat(times_df)
-        return evaluate_from_predictions(
-            models=model, fcsts_df=fcsts_df, times_df=times_df
+        return self.evaluate_from_predictions(
+            models=model,
+            fcsts_df=fcsts_df,
+            times_df=times_df,
         )
 
     def evaluate_from_predictions(
